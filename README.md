@@ -112,6 +112,7 @@ English:
 - [Validation Protocol](docs/VALIDATION_PROTOCOL.en.md)
 - [Experiment Rules](docs/EXPERIMENT.en.md)
 - [Claims and Limits](docs/CLAIMS.en.md)
+- [Reproducibility Guide](docs/REPRODUCIBILITY.en.md)
 - [Release Binary Workflow](docs/Release_binaries.en.md)
 
 한국어:
@@ -119,6 +120,7 @@ English:
 - [검증 프로토콜](docs/VALIDATION_PROTOCOL.md)
 - [실험 규칙](docs/EXPERIMENT.md)
 - [주장과 한계](docs/CLAIMS.md)
+- [재현성 가이드](docs/REPRODUCIBILITY.md)
 - [릴리즈 바이너리 워크플로우](docs/Release_binaries.md)
 
 ## License

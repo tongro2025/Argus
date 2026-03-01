@@ -9,6 +9,7 @@
 - [VALIDATION_PROTOCOL.md](VALIDATION_PROTOCOL.md)
 - [EXPERIMENT.md](EXPERIMENT.md)
 - [CLAIMS.md](CLAIMS.md)
+- [REPRODUCIBILITY.md](REPRODUCIBILITY.md)
 - [Release_binaries.md](Release_binaries.md)
 
 ## English (Primary)
@@ -17,6 +18,7 @@
 - [VALIDATION_PROTOCOL.en.md](VALIDATION_PROTOCOL.en.md)
 - [EXPERIMENT.en.md](EXPERIMENT.en.md)
 - [CLAIMS.en.md](CLAIMS.en.md)
+- [REPRODUCIBILITY.en.md](REPRODUCIBILITY.en.md)
 - [Release_binaries.en.md](Release_binaries.en.md)
 
 ## 레거시 v0.2 문서
