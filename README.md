@@ -109,6 +109,7 @@ Sanitization removes/redacts:
 
 English:
 
+- [Architecture Update (v0.2 to v1.0)](docs/Argus%20v1.0.en.md)
 - [Validation Protocol](docs/VALIDATION_PROTOCOL.en.md)
 - [Experiment Rules](docs/EXPERIMENT.en.md)
 - [Claims and Limits](docs/CLAIMS.en.md)
@@ -117,6 +118,7 @@ English:
 
 한국어:
 
+- [아키텍처 업데이트 (v0.2 to v1.0)](docs/Argus%20v1.0.md)
 - [검증 프로토콜](docs/VALIDATION_PROTOCOL.md)
 - [실험 규칙](docs/EXPERIMENT.md)
 - [주장과 한계](docs/CLAIMS.md)
