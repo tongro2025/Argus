@@ -55,12 +55,14 @@ Argus v1.0 keeps that philosophy but changes the product contract:
   -> repeated observation runs
   -> metrics aggregation + integrity accounting
   -> run directory write
+  -> optional execution_instability schema write
 
 [Run Directory]
   - metrics.json
   - report.md
   - run_meta.json
   - resolved_config.yaml (or equivalent snapshot)
+  - instability_metrics.json (when mode: execution_instability)
 
 [argus report <run_dir>]
   -> regenerate report from existing records
@@ -78,6 +80,7 @@ Argus v1.0 keeps that philosophy but changes the product contract:
 ```bash
 argus doctor
 argus run <config.yaml>
+argus run <config.yaml> --mode execution_instability
 argus report <run_dir>
 argus export <run_dir>
 argus export <run_dir> --sanitize
@@ -101,6 +104,7 @@ Representative fields:
 - `steps`
 - `repeat`
 - `warmup_steps`
+- `mode: standard | execution_instability`
 - `workload.*`
 
 Design intent:
@@ -118,6 +122,10 @@ Required record files:
 - `report.md`: human-readable interpretation with stability-aware wording
 - `run_meta.json`: environment/runtime metadata and protocol context
 - `resolved_config.yaml` (or equivalent): resolved run configuration
+
+Execution-instability runs also include:
+
+- `instability_metrics.json`: schema-compliant path, reuse, recomputation, and work-inflation observations
 
 Validation point:
 
@@ -150,7 +158,22 @@ This lowers reviewer friction for third-party reproducibility checks.
 
 ---
 
-## **9. Interpretation Boundary (v1.0)**
+## **9. Execution Instability Mode**
+
+`execution_instability` is the research observation mode used for execution-level variability and redundant-computation studies.
+
+It keeps the standard v1 record and adds `instability_metrics.json` with:
+
+- path observations: distinct path count and ordering changes
+- reuse observations: opportunities, failures, and intermediate rebuild count
+- work observations: observed work, reference work, repeated operations, and work inflation
+- derived observations: latency summary, variability score, reuse failure rate, and recompute ratio
+
+See [Execution Instability Mode](EXECUTION_INSTABILITY_MODE.en.md) for the full schema and interpretation boundary.
+
+---
+
+## **10. Interpretation Boundary (v1.0)**
 
 What v1.0 protocol execution means:
 
@@ -166,7 +189,7 @@ What it does not mean:
 
 ---
 
-## **10. Migration Notes for v0.2 Readers**
+## **11. Migration Notes for v0.2 Readers**
 
 If you started with v0.2 architecture documents:
 

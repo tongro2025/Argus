@@ -8,6 +8,7 @@
 - `steps`
 - `repeat`
 - `warmup_steps`
+- `mode: standard | execution_instability`
 - `ricci: [off, on]`
 - `workload.nodes`
 - `workload.requests_per_step`

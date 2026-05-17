@@ -7,6 +7,7 @@
 ## v1 검증 프로토콜 문서
 
 - [Argus v1.0 — 실행 관측기 아키텍처](Argus%20v1.0.md)
+- [Execution Instability Mode](EXECUTION_INSTABILITY_MODE.md)
 - [VALIDATION_PROTOCOL.md](VALIDATION_PROTOCOL.md)
 - [EXPERIMENT.md](EXPERIMENT.md)
 - [CLAIMS.md](CLAIMS.md)
@@ -17,6 +18,7 @@
 
 - [README.md](../README.md)
 - [Argus v1.0 — Execution Observatory Architecture](Argus%20v1.0.en.md)
+- [Execution Instability Mode](EXECUTION_INSTABILITY_MODE.en.md)
 - [VALIDATION_PROTOCOL.en.md](VALIDATION_PROTOCOL.en.md)
 - [EXPERIMENT.en.md](EXPERIMENT.en.md)
 - [CLAIMS.en.md](CLAIMS.en.md)

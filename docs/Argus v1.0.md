@@ -55,12 +55,14 @@ Argus v1.0은 그 철학을 유지하면서 제품 계약을 다음처럼 바꿨
   -> 반복 관측 실행
   -> 지표 집계 + 무결성 계산
   -> run directory 기록
+  -> 선택적 execution_instability 스키마 기록
 
 [Run Directory]
   - metrics.json
   - report.md
   - run_meta.json
   - resolved_config.yaml (또는 동등 스냅샷)
+  - instability_metrics.json (mode: execution_instability일 때)
 
 [argus report <run_dir>]
   -> 기존 기록으로 보고서 재생성
@@ -78,6 +80,7 @@ Argus v1.0은 그 철학을 유지하면서 제품 계약을 다음처럼 바꿨
 ```bash
 argus doctor
 argus run <config.yaml>
+argus run <config.yaml> --mode execution_instability
 argus report <run_dir>
 argus export <run_dir>
 argus export <run_dir> --sanitize
@@ -101,6 +104,7 @@ argus export <run_dir> --sanitize
 - `steps`
 - `repeat`
 - `warmup_steps`
+- `mode: standard | execution_instability`
 - `workload.*`
 
 설계 의도:
@@ -118,6 +122,10 @@ argus export <run_dir> --sanitize
 - `report.md`: 안정성 판정 문구를 포함한 사람이 읽는 보고서
 - `run_meta.json`: 환경/런타임 메타데이터와 프로토콜 문맥
 - `resolved_config.yaml` (또는 동등 파일): 해석 완료된 실행 설정
+
+Execution-instability 실행은 다음 파일도 포함한다:
+
+- `instability_metrics.json`: path, reuse, recomputation, work inflation 관측값을 담은 스키마 호환 산출물
 
 검증 포인트:
 
@@ -150,7 +158,22 @@ v1.0은 무결성 기반 해석을 유지하면서 확장한다:
 
 ---
 
-## **9. 해석 경계 (v1.0)**
+## **9. Execution Instability Mode**
+
+`execution_instability`는 실행 수준 변동성과 불필요한 재계산을 연구하기 위한 관측 모드이다.
+
+이 모드는 표준 v1 기록을 유지하면서 `instability_metrics.json`을 추가하고 다음 관측값을 기록한다:
+
+- path observation: distinct path count, ordering changes
+- reuse observation: reuse opportunities, reuse failures, intermediate rebuild count
+- work observation: observed work, reference work, repeated operations, work inflation
+- derived observation: latency summary, variability score, reuse failure rate, recompute ratio
+
+전체 스키마와 해석 경계는 [Execution Instability Mode](EXECUTION_INSTABILITY_MODE.md)를 참고한다.
+
+---
+
+## **10. 해석 경계 (v1.0)**
 
 v1.0 프로토콜 실행이 의미하는 것:
 
@@ -166,7 +189,7 @@ v1.0 프로토콜 실행이 의미하는 것:
 
 ---
 
-## **10. v0.2 사용자 전환 메모**
+## **11. v0.2 사용자 전환 메모**
 
 v0.2 아키텍처 문서에서 넘어오는 경우:
 

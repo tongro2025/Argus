@@ -10,6 +10,7 @@ Argus v1은 재현 가능한 관측 프로토콜입니다.
 ```bash
 argus doctor
 argus run <config.yaml>
+argus run <config.yaml> --mode execution_instability
 argus report <run_dir>
 argus export <run_dir>
 argus export <run_dir> --sanitize
@@ -22,6 +23,7 @@ argus export <run_dir> --sanitize
 - `metrics.json`
 - `report.md`
 - `run_meta.json`
+- `instability_metrics.json` (`mode: execution_instability`일 때)
 
 권장 패키지:
 

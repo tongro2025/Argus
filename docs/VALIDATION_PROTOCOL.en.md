@@ -10,6 +10,7 @@ Its output is a **Reproducible Observation Record**, not a direct performance cl
 ```bash
 argus doctor
 argus run <config.yaml>
+argus run <config.yaml> --mode execution_instability
 argus report <run_dir>
 argus export <run_dir>
 argus export <run_dir> --sanitize
@@ -22,6 +23,7 @@ Third-party validators run the experiment `repeat` times and submit:
 - `metrics.json`
 - `report.md`
 - `run_meta.json`
+- `instability_metrics.json` (when `mode: execution_instability`)
 
 Recommended package:
 

@@ -10,6 +10,10 @@ Argus is an execution observatory protocol for reproducible validation.
 It does not claim absolute performance.
 It records whether structural behavior changes are repeatedly observable under identical conditions.
 
+For execution-level variability and redundant-computation studies, Argus v1 provides
+`execution_instability` mode. This mode keeps the standard v1 record and adds
+`instability_metrics.json` for path, reuse, recomputation, and work-inflation observations.
+
 ## What Argus Outputs
 
 Argus output is a **Reproducible Observation Record**:
@@ -17,6 +21,7 @@ Argus output is a **Reproducible Observation Record**:
 - `metrics.json`
 - `report.md`
 - `run_meta.json`
+- `instability_metrics.json` (when `mode: execution_instability`)
 
 Optional submission package:
 
@@ -46,6 +51,7 @@ chmod +x argus
 ```bash
 argus doctor
 argus run <config.yaml>
+argus run <config.yaml> --mode execution_instability
 argus report <run_dir>
 argus export <run_dir>
 argus export <run_dir> --sanitize
@@ -58,6 +64,7 @@ seed: 42
 steps: 500
 repeat: 5
 warmup_steps: 20
+mode: standard
 ricci: [off, on]
 workload:
   nodes: 8
@@ -66,6 +73,9 @@ workload:
 
 Warmup steps are executed but excluded from final statistics.
 
+With `mode: execution_instability`, Argus additionally writes
+`instability_metrics.json` next to the standard artifacts.
+
 ## What gets measured
 
 - P95 latency, P99 latency, throughput
@@ -73,6 +83,13 @@ Warmup steps are executed but excluded from final statistics.
 - error_rate, oom_count, deadlock_count, crash_count
 - peak_memory_usage, avg_memory_usage
 - per-metric `Mean`, `Std Dev`, `Min`, `Max`
+
+With `mode: execution_instability`, Argus also records:
+
+- distinct execution path count and ordering changes
+- reuse opportunities, reuse failures, and intermediate rebuild count
+- observed work, reference work, repeated operations, and work inflation ratio
+- recompute ratio and execution path variability score
 
 ## Environment reliability checks
 
@@ -110,6 +127,7 @@ Sanitization removes/redacts:
 English:
 
 - [Architecture Update (v0.2 to v1.0)](docs/Argus%20v1.0.en.md)
+- [Execution Instability Mode](docs/EXECUTION_INSTABILITY_MODE.en.md)
 - [Validation Protocol](docs/VALIDATION_PROTOCOL.en.md)
 - [Experiment Rules](docs/EXPERIMENT.en.md)
 - [Claims and Limits](docs/CLAIMS.en.md)
@@ -119,6 +137,7 @@ English:
 한국어:
 
 - [아키텍처 업데이트 (v0.2 to v1.0)](docs/Argus%20v1.0.md)
+- [Execution Instability Mode](docs/EXECUTION_INSTABILITY_MODE.md)
 - [검증 프로토콜](docs/VALIDATION_PROTOCOL.md)
 - [실험 규칙](docs/EXPERIMENT.md)
 - [주장과 한계](docs/CLAIMS.md)
