@@ -12,7 +12,6 @@ Primary entry point: [README.md](../README.md)
 - [EXPERIMENT.en.md](EXPERIMENT.en.md)
 - [CLAIMS.en.md](CLAIMS.en.md)
 - [REPRODUCIBILITY.en.md](REPRODUCIBILITY.en.md)
-- [Release_binaries.en.md](Release_binaries.en.md)
 
 ## Korean Counterparts
 
@@ -23,7 +22,6 @@ Primary entry point: [README.md](../README.md)
 - [EXPERIMENT.md](EXPERIMENT.md)
 - [CLAIMS.md](CLAIMS.md)
 - [REPRODUCIBILITY.md](REPRODUCIBILITY.md)
-- [Release_binaries.md](Release_binaries.md)
 
 ## Legacy v0.2 Docs
 

@@ -28,31 +28,13 @@
 
 특별한 데이터셋이나 모델은 필요하지 않다.
 
-## 3. 설치 방법 (프리빌트 바이너리)
+## 3. Runtime Availability
 
-이 프로토콜에서는 소스 빌드 대신 프리빌트 바이너리를 사용한다.
+검증하려는 protocol version과 mode를 명시적으로 지원하는 Argus 구현체 또는 바이너리를 사용한다.
 
-Linux (x86_64):
+이 공개 저장소는 문서와 프로토콜 기록을 위한 저장소이다. 현재 `execution_instability` 모드의 내부 구현 소스는 공개하지 않으며, 과거 release asset이 새로 문서화된 protocol extension을 구현한다고 가정하면 안 된다.
 
-```bash
-curl -L https://github.com/tongro2025/Argus/releases/latest/download/argus-linux-amd64 -o argus
-chmod +x argus
-mkdir -p "$HOME/.local/bin"
-mv ./argus "$HOME/.local/bin/argus"
-export PATH="$HOME/.local/bin:$PATH"
-```
-
-macOS (Apple Silicon / arm64):
-
-```bash
-curl -L https://github.com/tongro2025/Argus/releases/latest/download/argus-macos-arm64 -o argus
-chmod +x argus
-mkdir -p "$HOME/.local/bin"
-mv ./argus "$HOME/.local/bin/argus"
-export PATH="$HOME/.local/bin:$PATH"
-```
-
-설치 확인:
+런타임 확인:
 
 ```bash
 argus doctor
@@ -152,8 +134,9 @@ Argus는 변동성 기록을 포함해 판정 근거를 제공한다.
 
 `argus doctor` 실패 시:
 
-- 바이너리/아키텍처 일치 여부 확인 (`exec format error`면 올바른 바이너리 재다운로드)
-- 실행 권한 확인 (`chmod +x argus`)
+- 요청한 protocol mode를 구현체/바이너리가 지원하는지 확인
+- 바이너리 배포본을 사용할 경우 바이너리/아키텍처 일치 여부 확인
+- 로컬 실행 파일을 사용할 경우 실행 권한 확인
 - PATH 확인 (`command -v argus`)
 
 실행 중 권한 제약으로 실패하면:

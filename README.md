@@ -2,13 +2,17 @@
 
 ![Argus Full Logo](argus_logo/argus_full_logo.png)
 ![status](https://img.shields.io/badge/status-v1.0.0--validation-blue)
-![platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS-lightgrey)
+![scope](https://img.shields.io/badge/scope-documentation-lightgrey)
 ![license](https://img.shields.io/badge/license-Apache%202.0-green)
 
 Argus is an execution observatory protocol for reproducible validation.
 
 It does not claim absolute performance.
 It records whether structural behavior changes are repeatedly observable under identical conditions.
+
+This repository is the public documentation and protocol record for Argus.
+It does not currently publish the internal implementation source for
+`execution_instability` mode.
 
 For execution-level variability and redundant-computation studies, Argus v1 provides
 `execution_instability` mode. This mode keeps the standard v1 record and adds
@@ -28,25 +32,7 @@ Optional submission package:
 - `argus_result.zip`
 - `argus_result.sanitized.zip` (`--sanitize`)
 
-## Try it in 10 seconds
-
-Linux (amd64):
-
-```bash
-curl -L https://github.com/tongro2025/Argus/releases/latest/download/argus-linux-amd64 -o argus
-chmod +x argus
-./argus --help
-```
-
-macOS (Apple Silicon):
-
-```bash
-curl -L https://github.com/tongro2025/Argus/releases/latest/download/argus-macos-arm64 -o argus
-chmod +x argus
-./argus --help
-```
-
-## Core CLI (v1)
+## Protocol CLI Contract (v1)
 
 ```bash
 argus doctor
@@ -56,6 +42,11 @@ argus report <run_dir>
 argus export <run_dir>
 argus export <run_dir> --sanitize
 ```
+
+The commands above define the public protocol interface. A separate binary
+release is not required for documenting `execution_instability` mode in this
+repository. A new release should be published only when a corresponding public
+implementation binary is intentionally made available.
 
 ## Example config.yaml
 
@@ -132,7 +123,6 @@ English:
 - [Experiment Rules](docs/EXPERIMENT.en.md)
 - [Claims and Limits](docs/CLAIMS.en.md)
 - [Reproducibility Guide](docs/REPRODUCIBILITY.en.md)
-- [Release Binary Workflow](docs/Release_binaries.en.md)
 
 한국어:
 
@@ -142,7 +132,6 @@ English:
 - [실험 규칙](docs/EXPERIMENT.md)
 - [주장과 한계](docs/CLAIMS.md)
 - [재현성 가이드](docs/REPRODUCIBILITY.md)
-- [릴리즈 바이너리 워크플로우](docs/Release_binaries.md)
 
 ## License
 

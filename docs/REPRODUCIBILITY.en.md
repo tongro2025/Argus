@@ -28,31 +28,17 @@ What this document does not prove:
 
 No special dataset or model is required.
 
-## 3. Installation (Prebuilt Binary)
+## 3. Runtime Availability
 
-Do not build from source for this protocol. Use prebuilt binaries.
+Use an Argus implementation or binary that explicitly declares support for the
+protocol version and mode being validated.
 
-Linux (x86_64):
+This public repository is the documentation and protocol record. It does not
+currently publish the internal implementation source for `execution_instability`
+mode, and readers should not assume that historical release assets implement
+newly documented protocol extensions.
 
-```bash
-curl -L https://github.com/tongro2025/Argus/releases/latest/download/argus-linux-amd64 -o argus
-chmod +x argus
-mkdir -p "$HOME/.local/bin"
-mv ./argus "$HOME/.local/bin/argus"
-export PATH="$HOME/.local/bin:$PATH"
-```
-
-macOS (Apple Silicon / arm64):
-
-```bash
-curl -L https://github.com/tongro2025/Argus/releases/latest/download/argus-macos-arm64 -o argus
-chmod +x argus
-mkdir -p "$HOME/.local/bin"
-mv ./argus "$HOME/.local/bin/argus"
-export PATH="$HOME/.local/bin:$PATH"
-```
-
-Installation check:
+Runtime check:
 
 ```bash
 argus doctor
@@ -152,8 +138,9 @@ What this reproducibility run does not mean:
 
 If `argus doctor` fails:
 
-- confirm binary and architecture match (for `exec format error`, download the correct binary)
-- confirm execute permission (`chmod +x argus`)
+- confirm the implementation/binary supports the requested protocol mode
+- confirm binary and architecture match if using a binary distribution
+- confirm execute permission if using a local executable
 - confirm PATH contains the installed location (`command -v argus`)
 
 If runtime fails due to permission constraints:
