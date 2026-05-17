@@ -28,11 +28,29 @@
 
 특별한 데이터셋이나 모델은 필요하지 않다.
 
-## 3. Runtime Availability
+## 3. 설치 방법 (프리빌트 바이너리)
 
-검증하려는 protocol version과 mode를 명시적으로 지원하는 Argus 구현체 또는 바이너리를 사용한다.
+이 프로토콜에서는 현재 공개 release binary를 사용한다. 이 저장소는 문서와 release asset을 공개하며, 내부 구현 소스는 현재 공개하지 않는다.
 
-이 공개 저장소는 문서와 프로토콜 기록을 위한 저장소이다. 현재 `execution_instability` 모드의 내부 구현 소스는 공개하지 않으며, 과거 release asset이 새로 문서화된 protocol extension을 구현한다고 가정하면 안 된다.
+Linux (x86_64):
+
+```bash
+curl -L https://github.com/tongro2025/Argus/releases/latest/download/argus-linux-amd64 -o argus
+chmod +x argus
+mkdir -p "$HOME/.local/bin"
+mv ./argus "$HOME/.local/bin/argus"
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+macOS (Apple Silicon / arm64):
+
+```bash
+curl -L https://github.com/tongro2025/Argus/releases/latest/download/argus-macos-arm64 -o argus
+chmod +x argus
+mkdir -p "$HOME/.local/bin"
+mv ./argus "$HOME/.local/bin/argus"
+export PATH="$HOME/.local/bin:$PATH"
+```
 
 런타임 확인:
 
@@ -74,6 +92,7 @@ run directory에서 확인할 파일:
 - `report.md`: 사람이 읽는 보고서
 - `run_meta.json`: 실행 메타데이터와 환경 문맥
 - `resolved_config.yaml` (또는 동등한 config 스냅샷): 최종 해석된 실행 설정
+- `instability_metrics.json`: `mode: execution_instability`일 때 추가되는 실행 불안정성 산출물
 
 ## 6. 보고서 재생성 (Report Regeneration)
 

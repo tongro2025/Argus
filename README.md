@@ -1,8 +1,8 @@
 # Argus Validation Protocol v1.0
 
 ![Argus Full Logo](argus_logo/argus_full_logo.png)
-![status](https://img.shields.io/badge/status-v1.0.0--validation-blue)
-![scope](https://img.shields.io/badge/scope-documentation-lightgrey)
+![status](https://img.shields.io/badge/status-v1.0.1--execution--instability-blue)
+![scope](https://img.shields.io/badge/scope-docs%20%2B%20binaries-lightgrey)
 ![license](https://img.shields.io/badge/license-Apache%202.0-green)
 
 Argus is an execution observatory protocol for reproducible validation.
@@ -11,8 +11,8 @@ It does not claim absolute performance.
 It records whether structural behavior changes are repeatedly observable under identical conditions.
 
 This repository is the public documentation and protocol record for Argus.
-It does not currently publish the internal implementation source for
-`execution_instability` mode.
+Public binaries are distributed through GitHub Releases. The internal
+implementation source is not currently published in this repository.
 
 For execution-level variability and redundant-computation studies, Argus v1 provides
 `execution_instability` mode. This mode keeps the standard v1 record and adds
@@ -32,6 +32,26 @@ Optional submission package:
 - `argus_result.zip`
 - `argus_result.sanitized.zip` (`--sanitize`)
 
+## Try it in 10 seconds
+
+Linux (amd64):
+
+```bash
+curl -L https://github.com/tongro2025/Argus/releases/latest/download/argus-linux-amd64 -o argus
+chmod +x argus
+./argus --help
+```
+
+macOS (Apple Silicon):
+
+```bash
+curl -L https://github.com/tongro2025/Argus/releases/latest/download/argus-macos-arm64 -o argus
+chmod +x argus
+./argus --help
+```
+
+Windows binaries are also published as release assets.
+
 ## Protocol CLI Contract (v1)
 
 ```bash
@@ -43,10 +63,8 @@ argus export <run_dir>
 argus export <run_dir> --sanitize
 ```
 
-The commands above define the public protocol interface. A separate binary
-release is not required for documenting `execution_instability` mode in this
-repository. A new release should be published only when a corresponding public
-implementation binary is intentionally made available.
+The commands above define the public protocol interface. Current public release
+binaries include `execution_instability` mode support.
 
 ## Example config.yaml
 

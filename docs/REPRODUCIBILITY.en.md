@@ -28,15 +28,31 @@ What this document does not prove:
 
 No special dataset or model is required.
 
-## 3. Runtime Availability
+## 3. Installation (Prebuilt Binary)
 
-Use an Argus implementation or binary that explicitly declares support for the
-protocol version and mode being validated.
+Use a current public release binary for this protocol. The repository publishes
+documentation and release assets; it does not currently publish the internal
+implementation source.
 
-This public repository is the documentation and protocol record. It does not
-currently publish the internal implementation source for `execution_instability`
-mode, and readers should not assume that historical release assets implement
-newly documented protocol extensions.
+Linux (x86_64):
+
+```bash
+curl -L https://github.com/tongro2025/Argus/releases/latest/download/argus-linux-amd64 -o argus
+chmod +x argus
+mkdir -p "$HOME/.local/bin"
+mv ./argus "$HOME/.local/bin/argus"
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+macOS (Apple Silicon / arm64):
+
+```bash
+curl -L https://github.com/tongro2025/Argus/releases/latest/download/argus-macos-arm64 -o argus
+chmod +x argus
+mkdir -p "$HOME/.local/bin"
+mv ./argus "$HOME/.local/bin/argus"
+export PATH="$HOME/.local/bin:$PATH"
+```
 
 Runtime check:
 
@@ -78,6 +94,7 @@ Expected files in a run directory:
 - `report.md`: human-readable report
 - `run_meta.json`: execution metadata and environment context
 - `resolved_config.yaml` (or equivalent config snapshot): resolved run configuration
+- `instability_metrics.json`: additional execution-instability artifact when `mode: execution_instability`
 
 ## 6. Report Regeneration
 
